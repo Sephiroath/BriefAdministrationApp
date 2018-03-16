@@ -1,0 +1,9 @@
+$baconcha-black-primary: mat-palette($mat-grey, 900, 500, 900);
+$baconcha-black-accent: mat-palette($mat-green, A200);
+$baconcha-black-warn: mat-palette($mat-red, A200);
+
+$baconcha-black-theme: mat-dark-theme(
+  $baconcha-black-primary,
+  $baconcha-black-accent,
+  $baconcha-black-warn
+);

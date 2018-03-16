@@ -1,0 +1,9 @@
+$baconcha-nature-primary: mat-palette($mat-brown, 700, 300, 900);
+$baconcha-nature-accent: mat-palette($mat-amber, 500);
+$baconcha-nature-warn: mat-palette($mat-red, 600);
+
+$baconcha-nature-theme: mat-light-theme(
+  $baconcha-nature-primary,
+  $baconcha-nature-accent,
+  $baconcha-nature-warn
+);
