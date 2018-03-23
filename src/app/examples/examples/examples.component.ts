@@ -15,7 +15,6 @@ export class ExamplesComponent implements OnInit {
     { link: 'theming', label: 'Theming' },
     { link: 'authenticated', label: 'Auth' }
   ];
-
   constructor() {}
 
   ngOnInit() {}

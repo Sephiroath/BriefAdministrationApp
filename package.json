@@ -2,7 +2,6 @@
   "name": "BriefAdministrationApp",
   "version": "0.1.0",
   "license": "MIT",
-  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

@@ -21,6 +21,10 @@ const routes: Routes = [
     loadChildren: 'app/examples/examples.module#ExamplesModule'
   },
   {
+    path: 'projectmanagement',
+    loadChildren: 'app/projectmanagement/projectmanagement.module#ProjectmanagementModule'
+  },
+  {
     path: '**',
     redirectTo: 'about'
   }
