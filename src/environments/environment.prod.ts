@@ -4,6 +4,7 @@ export const environment = {
   appName: 'Brief Administration Angular',
   envName: 'PROD',
   production: true,
+  apiUrl: 'http://localhost:6043/api/',
   versions: {
     app: packageJson.version,
     angular: packageJson.dependencies['@angular/core'],

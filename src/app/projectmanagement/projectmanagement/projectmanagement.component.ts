@@ -10,7 +10,7 @@ import { routerTransition } from '@app/core';
 })
 export class ProjectmanagementComponent implements OnInit {
   examples = [
-    { link: 'project', label: 'Proyectos' },
+    { link: 'projects', label: 'Proyectos' },
     { link: 'events', label: 'Eventos' }
   ];
   constructor() { }

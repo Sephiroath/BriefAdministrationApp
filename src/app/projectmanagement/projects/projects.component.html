@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="main-heading">Proyectos</h1>
+    </div>
+  </div>
+  <div class="row" *ngIf="projects.loading">
+    <div class="center-spinner">
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
+  <div *ngIf="projects.projects">
+    <div class="row projects-table-header-container">
+      <mat-form-field class="projects-table-header">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
+    <div class="row projects-table-container" matSort>
+      <mat-table class="projects-table" [dataSource]="dataSource">
+        <ng-container matColumnDef="ProjectId">
+          <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+          <mat-cell *matCellDef="let project"> {{project.ProjectId}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Identifier">
+          <mat-header-cell *matHeaderCellDef> Identificador </mat-header-cell>
+          <mat-cell *matCellDef="let project"> {{project.Identifier}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="ProjectTitle">
+          <mat-header-cell *matHeaderCellDef> Titulo Proyecto </mat-header-cell>
+          <mat-cell *matCellDef="let project"> {{project.ProjectTitle}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="CurrentPhaseDescription">
+          <mat-header-cell *matHeaderCellDef> Fase </mat-header-cell>
+          <mat-cell *matCellDef="let project"> {{project.CurrentPhaseDescription}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="StateDescription">
+          <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
+          <mat-cell *matCellDef="let project"> {{project.StateDescription}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="PriorityDescription">
+          <mat-header-cell *matHeaderCellDef> Prioridad </mat-header-cell>
+          <mat-cell *matCellDef="let project"> {{project.PriorityDescription}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="GcrmStateDescription">
+          <mat-header-cell *matHeaderCellDef> Estado Gcrm </mat-header-cell>
+          <mat-cell *matCellDef="let project"> {{project.GcrmStateDescription}} </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+  </div>
+</div>
