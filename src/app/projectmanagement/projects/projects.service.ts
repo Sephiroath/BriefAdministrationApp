@@ -8,7 +8,7 @@ import { environment as env } from '@env/environment';
 import { Project } from './projects.reducer';
 
 const API_URL = env.apiUrl;
-const API_CONTROLLER = 'PROJECT'
+const API_CONTROLLER = 'PROJECT';
 
 @Injectable()
 export class ProjectsService {

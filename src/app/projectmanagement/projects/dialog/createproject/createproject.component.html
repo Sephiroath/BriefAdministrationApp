@@ -1,11 +1,18 @@
 <div class="container">
-  <h3 mat-dialog-title>Proyecto id: {{data.projectId}}</h3>
+  <h3 mat-dialog-title>Crear nuevo Proyecto</h3>
 
   <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Id" [(ngModel)]="data.projectId" name="projectId" required >
+        <input matInput #input class="form-control" placeholder="Identificador" [(ngModel)]="data.Identifier" name="Identifier" required >
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Fase Actual" [(ngModel)]="data.CurrentPhaseDescription" name="CurrentPhaseDescription" required >
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>

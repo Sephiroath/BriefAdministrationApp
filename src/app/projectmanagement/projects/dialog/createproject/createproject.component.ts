@@ -12,7 +12,7 @@ import { ActionProjectsCreateProject, selectorProjects, Project } from '../../pr
   templateUrl: './createproject.component.html',
   styleUrls: ['./createproject.component.scss']
 })
-export class CreateprojectComponent implements OnInit{
+export class CreateprojectComponent implements OnInit {
   private unsubscribe$: Subject<void> = new Subject<void>();
   projects: any;
   data: CreateProjectModel = new CreateProjectModel();
