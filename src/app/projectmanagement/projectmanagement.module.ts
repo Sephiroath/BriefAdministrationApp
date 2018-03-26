@@ -11,6 +11,8 @@ import { ProjectsEffects } from './projects/projects.effects';
 import { ProjectsService } from './projects/projects.service';
 import { ProjectmanagementComponent } from './projectmanagement/projectmanagement.component';
 import { EventsComponent } from './events/events.component';
+import { CreateprojectComponent } from './projects/dialog/createproject/createproject.component';
+import { EditprojectComponent } from './projects/dialog/editproject/editproject.component';
 
 @NgModule({
   imports: [
@@ -21,7 +23,8 @@ import { EventsComponent } from './events/events.component';
     }),
     EffectsModule.forFeature([ProjectsEffects])
   ],
-  declarations: [ProjectsComponent, ProjectmanagementComponent, EventsComponent],
+  entryComponents: [CreateprojectComponent, EditprojectComponent],
+  declarations: [ProjectsComponent, ProjectmanagementComponent, EventsComponent, CreateprojectComponent, EditprojectComponent],
   providers: [ProjectsService]
 })
 export class ProjectmanagementModule { }

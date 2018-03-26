@@ -4,10 +4,11 @@ import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs/Subject';
 import { takeUntil } from 'rxjs/operators/takeUntil';
 import { DataSource } from '@angular/cdk/collections';
-import { MatSort, MatTableDataSource } from '@angular/material';
+import { MatDialog, MatSort, MatTableDataSource } from '@angular/material';
 
 import { ANIMATE_ON_ROUTE_ENTER } from '@app/core';
 import { ActionProjectList, selectorProjects, Project } from './projects.reducer';
+import { CreateprojectComponent } from './dialog/createproject/createproject.component';
 
 @Component({
   selector: 'baconcha-projects',
@@ -21,14 +22,14 @@ export class ProjectsComponent implements OnInit, OnDestroy, AfterViewInit {
   projects: any;
   initialized;
   displayedColumns = ['ProjectId', 'Identifier', 'ProjectTitle', 'CurrentPhaseDescription', 'StateDescription', 'PriorityDescription',
-    'GcrmStateDescription'];
+    'GcrmStateDescription', 'actions'];
   dataSource: MatTableDataSource<Project[]>;
 
   @ViewChild(MatSort) sort: MatSort;
 
   // project = new this.project
 
-  constructor(public store: Store<any>, public snackBar: MatSnackBar) { }
+  constructor(public store: Store<any>, public snackBar: MatSnackBar, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.initialized = false;
@@ -61,6 +62,20 @@ export class ProjectsComponent implements OnInit, OnDestroy, AfterViewInit {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
+  }
+
+  onCreateProject() {
+    const dialogRef = this.dialog.open(CreateprojectComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        this.showNotification('Proyecto creado');
+      }
+    });
+  }
+
+  onEditProject(id: number) {
+    return null;
   }
 
   private showNotification(message: string, action?: string) {

@@ -19,6 +19,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { BigInputComponent } from './big-input/big-input.component';
 import { BigInputActionComponent } from './big-input/big-input-action.component';
@@ -44,7 +45,8 @@ import { BigInputActionComponent } from './big-input/big-input-action.component'
     MatTooltipModule,
     MatSnackBarModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule
   ],
   declarations: [BigInputComponent, BigInputActionComponent],
   exports: [
@@ -68,6 +70,7 @@ import { BigInputActionComponent } from './big-input/big-input-action.component'
     MatSnackBarModule,
     MatTableModule,
     MatPaginatorModule,
+    MatDialogModule,
 
     BigInputComponent,
     BigInputActionComponent

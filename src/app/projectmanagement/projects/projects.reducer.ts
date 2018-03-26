@@ -6,8 +6,9 @@ export const PROJECTS_KEY = 'PROJECTMANAGEMENT.PROJECTS';
 
 export enum ProjectsActionTypes {
     LISTPROJECTS = '[Projects] List',
-    LISTPROJECSUCCESS = '[Projects] ListSuccess',
-    LISTPROJECTERROR = '[Projects] ListErrors'
+    LISTPROJECTSUCCESS = '[Projects] ListSuccess',
+    LISTPROJECTERROR = '[Projects] ListErrors',
+    CREATEPROJECT = '[Projects] EditProject'
 }
 
 export class ActionProjectList implements Action {
@@ -16,7 +17,7 @@ export class ActionProjectList implements Action {
 }
 
 export class ActionProjectListSuccess implements Action {
-    readonly type = ProjectsActionTypes.LISTPROJECSUCCESS;
+    readonly type = ProjectsActionTypes.LISTPROJECTSUCCESS;
     constructor(public payload: { projects: Project[] }) { }
 }
 
@@ -25,10 +26,16 @@ export class ActionProjectListError implements Action {
     constructor(public payload: { error: HttpErrorResponse }) { }
 }
 
+export class ActionProjectsCreateProject implements Action {
+    readonly type = ProjectsActionTypes.CREATEPROJECT;
+    constructor(public payload: { projects: Project[], project: Project}) { }
+}
+
 export type ProjectsActions =
     | ActionProjectList
     | ActionProjectListSuccess
-    | ActionProjectListError;
+    | ActionProjectListError
+    | ActionProjectsCreateProject;
 
 export function ProjectsReducer(
     state: ProjectsState = initialState,
@@ -39,7 +46,10 @@ export function ProjectsReducer(
                 ...state,
                 loading: true,
                 projects: null,
+                project: null,
                 error: null,
+                isEditing: null,
+                isCreating: null,
                 filter: action.payload.filter
             }
         case ProjectsActionTypes.LISTPROJECTERROR:
@@ -47,15 +57,32 @@ export function ProjectsReducer(
                 ...state,
                 loading: false,
                 projects: null,
+                project: null,
                 error: action.payload.error,
+                isEditing: null,
+                isCreating: null,
                 filter: null
             }
-        case ProjectsActionTypes.LISTPROJECSUCCESS:
+        case ProjectsActionTypes.LISTPROJECTSUCCESS:
             return {
                 ...state,
                 loading: false,
                 projects: action.payload.projects,
+                project: null,
                 error: null,
+                isEditing: null,
+                isCreating: null,
+                filter: null
+            }
+        case ProjectsActionTypes.CREATEPROJECT:
+            return {
+                ...state,
+                loading: false,
+                projects:  action.payload.projects,
+                project:  action.payload.project,
+                error: null,
+                isEditing: null,
+                isCreating: null,
                 filter: null
             }
     }
@@ -95,5 +122,8 @@ export interface ProjectsState {
     filter: ProjectsFilter;
     loading: boolean;
     projects?: Project[];
+    project?: Project;
+    isEditing?: boolean;
+    isCreating?: boolean;
     error?: HttpErrorResponse;
 }

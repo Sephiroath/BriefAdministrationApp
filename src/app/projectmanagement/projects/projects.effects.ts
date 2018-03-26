@@ -30,7 +30,7 @@ export class ProjectsEffects {
   ) {}
 
   @Effect()
-  retrieveStock(): Observable<Action> {
+  retrieveProject(): Observable<Action> {
     return this.actions$.ofType(ProjectsActionTypes.LISTPROJECTS).pipe(
       tap((action: ActionProjectList) =>
         this.localStorageService.setItem(PROJECTS_KEY, {
