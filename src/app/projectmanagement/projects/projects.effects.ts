@@ -13,13 +13,13 @@ import { catchError } from 'rxjs/operators/catchError';
 import { LocalStorageService } from '@app/core';
 
 import {
-    ActionProjectList,
-    ActionProjectListSuccess,
-    ActionProjectListError,
-    PROJECTS_KEY,
-    ProjectsActionTypes
-  } from './projects.reducer';
-  import { ProjectsService } from './projects.service';
+  ActionProjectList,
+  ActionProjectListSuccess,
+  ActionProjectListError,
+  PROJECTS_KEY,
+  ProjectsActionTypes
+} from './projects.reducer';
+import { ProjectsService } from './projects.service';
 
 @Injectable()
 export class ProjectsEffects {
@@ -27,7 +27,7 @@ export class ProjectsEffects {
     private actions$: Actions<Action>,
     private localStorageService: LocalStorageService,
     private service: ProjectsService
-  ) {}
+  ) { }
 
   @Effect()
   retrieveProject(): Observable<Action> {

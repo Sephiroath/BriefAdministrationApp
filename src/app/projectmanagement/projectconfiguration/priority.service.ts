@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-
 
 import { environment as env } from '@env/environment';
 import { Priority } from './Models/ProjectConfigurationModels';
@@ -12,7 +10,9 @@ const API_CONTROLLER = 'PRIORITY';
 
 @Injectable()
 export class PriorityService {
-
-  constructor() { }
-
+  constructor(private httpClient: HttpClient) { }
+  retrievePriorities(): Observable<Priority[]> {
+    return this.httpClient
+      .get<Priority[]>(API_URL + API_CONTROLLER);
+  }
 }

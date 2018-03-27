@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
 
 
 import { environment as env } from '@env/environment';
@@ -12,7 +11,9 @@ const API_CONTROLLER = 'PRODUCTLINE';
 
 @Injectable()
 export class ProductlineService {
-
-  constructor() { }
-
+  constructor(private httpClient: HttpClient) { }
+  retrieveProductLines(): Observable<ProductLine[]> {
+    return this.httpClient
+      .get<ProductLine[]>(API_URL + API_CONTROLLER);
+  }
 }
