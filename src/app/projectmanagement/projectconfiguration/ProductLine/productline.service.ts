@@ -2,17 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
+
 import { environment as env } from '@env/environment';
-import { ProjectState } from './Models/ProjectConfigurationModels';
+import { ProductLine } from '../Models/ProjectConfigurationModels';
 
 const API_URL = env.apiUrl;
-const API_CONTROLLER = 'PROJECTSTATE';
+const API_CONTROLLER = 'PRODUCTLINE';
 
 @Injectable()
-export class ProjectstatusService {
+export class ProductlineService {
   constructor(private httpClient: HttpClient) { }
-  retrieveProjectStatus(): Observable<ProjectState[]> {
+  retrieveProductLines(): Observable<ProductLine[]> {
     return this.httpClient
-      .get<ProjectState[]>(API_URL + API_CONTROLLER);
+      .get<ProductLine[]>(API_URL + API_CONTROLLER);
   }
 }

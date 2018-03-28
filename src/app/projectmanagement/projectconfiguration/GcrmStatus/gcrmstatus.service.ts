@@ -2,18 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
-
 import { environment as env } from '@env/environment';
-import { ProductLine } from './Models/ProjectConfigurationModels';
+import { GcrmState } from '../Models/ProjectConfigurationModels';
 
 const API_URL = env.apiUrl;
-const API_CONTROLLER = 'PRODUCTLINE';
+const API_CONTROLLER = 'GCRMSTATE';
 
 @Injectable()
-export class ProductlineService {
+export class GcrmstatusService {
   constructor(private httpClient: HttpClient) { }
-  retrieveProductLines(): Observable<ProductLine[]> {
+  retrievePhases(): Observable<GcrmState[]> {
     return this.httpClient
-      .get<ProductLine[]>(API_URL + API_CONTROLLER);
+      .get<GcrmState[]>(API_URL + API_CONTROLLER);
   }
 }

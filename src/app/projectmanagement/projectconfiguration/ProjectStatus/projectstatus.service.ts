@@ -3,16 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import { environment as env } from '@env/environment';
-import { GcrmState } from './Models/ProjectConfigurationModels';
+import { ProjectState } from '../Models/ProjectConfigurationModels';
 
 const API_URL = env.apiUrl;
-const API_CONTROLLER = 'GCRMSTATE';
+const API_CONTROLLER = 'PROJECTSTATE';
 
 @Injectable()
-export class GcrmstatusService {
+export class ProjectstatusService {
   constructor(private httpClient: HttpClient) { }
-  retrievePhases(): Observable<GcrmState[]> {
+  retrieveProjectStatus(): Observable<ProjectState[]> {
     return this.httpClient
-      .get<GcrmState[]>(API_URL + API_CONTROLLER);
+      .get<ProjectState[]>(API_URL + API_CONTROLLER);
   }
 }

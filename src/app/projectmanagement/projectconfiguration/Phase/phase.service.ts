@@ -3,16 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import { environment as env } from '@env/environment';
-import { Priority } from './Models/ProjectConfigurationModels';
+import { Phase } from '../Models/ProjectConfigurationModels';
 
 const API_URL = env.apiUrl;
-const API_CONTROLLER = 'PRIORITY';
+const API_CONTROLLER = 'PHASE';
 
 @Injectable()
-export class PriorityService {
+export class PhaseService {
   constructor(private httpClient: HttpClient) { }
-  retrievePriorities(): Observable<Priority[]> {
+  retrievePhases(): Observable<Phase[]> {
     return this.httpClient
-      .get<Priority[]>(API_URL + API_CONTROLLER);
+      .get<Phase[]>(API_URL + API_CONTROLLER);
   }
 }

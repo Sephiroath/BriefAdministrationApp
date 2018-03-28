@@ -48,8 +48,6 @@ export function ProjectsReducer(
                 projects: null,
                 project: null,
                 error: null,
-                isEditing: null,
-                isCreating: null,
                 filter: action.payload.filter
             }
         case ProjectsActionTypes.LISTPROJECTERROR:
@@ -59,8 +57,6 @@ export function ProjectsReducer(
                 projects: null,
                 project: null,
                 error: action.payload.error,
-                isEditing: null,
-                isCreating: null,
                 filter: null
             }
         case ProjectsActionTypes.LISTPROJECTSUCCESS:
@@ -70,8 +66,6 @@ export function ProjectsReducer(
                 projects: action.payload.projects,
                 project: null,
                 error: null,
-                isEditing: null,
-                isCreating: null,
                 filter: null
             }
         case ProjectsActionTypes.CREATEPROJECT:
@@ -81,8 +75,6 @@ export function ProjectsReducer(
                 projects:  action.payload.projects,
                 project:  action.payload.project,
                 error: null,
-                isEditing: null,
-                isCreating: null,
                 filter: null
             }
     }
@@ -123,7 +115,5 @@ export interface ProjectsState {
     loading: boolean;
     projects?: Project[];
     project?: Project;
-    isEditing?: boolean;
-    isCreating?: boolean;
     error?: HttpErrorResponse;
 }
